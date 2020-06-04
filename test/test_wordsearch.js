@@ -80,4 +80,19 @@ describe("#wordSearch()", function() {
 
     assert.isTrue(result);
   });
+  it("should return true if the word is present diagonally", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'S', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'O', 'N', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'N', 'A', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'K', 'D', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'I', 'G', 'O', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'E', 'E', 'W', 'B'],
+      ['U', 'B', 'T', 'W', 'R', 'P', 'A', 'I'],
+      ['O', 'D', 'C', 'A', 'B', 'U', 'A', 'S'],
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'WINDOW')
+
+    assert.isTrue(result);
+  });
 });
