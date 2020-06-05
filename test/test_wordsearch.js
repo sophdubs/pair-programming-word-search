@@ -80,7 +80,7 @@ describe("#wordSearch()", function() {
 
     assert.isTrue(result);
   });
-  it("should return true if the word is present diagonally", function() {
+  it("should return true if the word is present diagonally from left to right", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'S', 'Q', 'U', 'A', 'L'],
       ['S', 'E', 'I', 'O', 'N', 'E', 'L', 'D'],
@@ -92,6 +92,54 @@ describe("#wordSearch()", function() {
       ['O', 'D', 'C', 'A', 'B', 'U', 'A', 'S'],
       ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
     ], 'WINDOW')
+
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word is present diagonally from right to left", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'S', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'O', 'N', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'N', 'A', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'K', 'D', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'I', 'B', 'O', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'E', 'E', 'W', 'B'],
+      ['U', 'B', 'R', 'W', 'R', 'P', 'A', 'I'],
+      ['O', 'R', 'C', 'A', 'B', 'U', 'A', 'S'],
+      ['Y', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'BERRY')
+
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word is present diagonally from right to left backwards", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'S', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'O', 'N', 'E', 'Y', 'D'],
+      ['Y', 'F', 'C', 'N', 'A', 'A', 'A', 'L'],
+      ['H', 'M', 'J', 'K', 'K', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'O', 'B', 'O', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'E', 'E', 'W', 'B'],
+      ['U', 'B', 'R', 'W', 'R', 'P', 'A', 'I'],
+      ['O', 'R', 'C', 'A', 'B', 'U', 'A', 'S'],
+      ['Y', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'OKAY')
+
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word is present diagonally from left to right backwards", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'S', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'O', 'N', 'E', 'Y', 'D'],
+      ['Y', 'N', 'C', 'N', 'A', 'A', 'A', 'L'],
+      ['H', 'M', 'O', 'K', 'K', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'S', 'B', 'O', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'A', 'E', 'W', 'B'],
+      ['U', 'B', 'R', 'W', 'R', 'J', 'A', 'I'],
+      ['O', 'R', 'C', 'A', 'B', 'U', 'A', 'S'],
+      ['Y', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'JASON')
 
     assert.isTrue(result);
   });

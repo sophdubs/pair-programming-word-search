@@ -19,33 +19,46 @@ const checkVertical = function (letters, word) {
 
 const checkBackwards = function (letters, word) {
     let reversed = word.split('').reverse().join('');
-    return (checkHorizontal(letters, reversed) || checkVertical(letters, reversed))
+    return (checkHorizontal(letters, reversed) || checkVertical(letters, reversed) || checkDiagonal(letters, reversed));
 };
 
 const checkDiagonal = function(letters, word) {
-    let result = false
+    let resultRight = false;
+    let resultLeft = false;
     for (let i = 0; i < letters.length; i++) {
         if (letters[i].includes(word[0])) {
             for (let j = 0; j < letters[0].length; j++) {
                 if (letters[i][j] === word[0]) {
                     if (i + word.length - 1 <= letters.length && j + word.length - 1 <= letters[0].length) {
-                        result = checkDiagonalRecursive(letters, i, j, word);
+                        resultRight = checkDiagonalRecursiveRight(letters, i, j, word);
+                    }
+                    if (i + word.length - 1 <= letters.length && j - word.length + 1 >= 0) {
+                        resultLeft = checkDiagonalRecursiveLeft(letters, i, j, word);
                     }
                 }
-                if(result === true) {
+                if(resultRight || resultLeft) {
                     return true;
                 }
             }
         }
     }
-    return result;
+    return (resultRight || resultLeft);
 };
 
-const checkDiagonalRecursive = function(letters, row, index, word) {
+const checkDiagonalRecursiveRight = function(letters, row, index, word) {
     if (word.length === 1) {
         return word === letters[row][index];
     } else if (letters[row][index] === word[0]) {
-        return checkDiagonalRecursive(letters, row + 1, index + 1, word.slice(1));
+        return checkDiagonalRecursiveRight(letters, row + 1, index + 1, word.slice(1));
+    }
+    return false;
+};
+
+const checkDiagonalRecursiveLeft = function(letters, row, index, word) {
+    if (word.length === 1) {
+        return word === letters[row][index];
+    } else if (letters[row][index] === word[0]) {
+        return checkDiagonalRecursiveLeft(letters, row + 1, index - 1, word.slice(1));
     }
     return false;
 };
